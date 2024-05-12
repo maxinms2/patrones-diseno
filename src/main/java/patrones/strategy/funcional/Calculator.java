@@ -3,7 +3,7 @@ package patrones.strategy.funcional;
 import java.util.function.IntBinaryOperator;
 
 public class Calculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) {//
         int num1 = 10;
         int num2 = 5;
 
