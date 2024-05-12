@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import patrones.adapter.spring.FileReaderAdapter;
 import patrones.visitor.spring.Circle;
 import patrones.visitor.spring.ClienteVisitor;
 import patrones.visitor.spring.Figure;
@@ -19,6 +20,9 @@ class PatronesApplicationTests {
 	@Autowired
 	private FigureVisitor visitor;
 	
+	@Autowired
+	private FileReaderAdapter adapter;
+	
 	@Test
 	void visitor() {
 		Circle c= new Circle(); Square sq=new Square();
@@ -29,6 +33,13 @@ class PatronesApplicationTests {
         StringBuilder sb = new StringBuilder("Results:\n");
         figures.forEach(figure -> figure.accept(visitor));
          sb.toString();
+	}
+	
+	@Test
+	void Adapter() {
+		String filename="data.csv";
+        adapter.readFile(filename);
+        System.out.println( "Archivo procesado correctamente: " + filename);
 	}
 	
 
