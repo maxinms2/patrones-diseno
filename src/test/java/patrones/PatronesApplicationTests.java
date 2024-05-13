@@ -6,9 +6,12 @@ import java.util.List;
 import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import patrones.adapter.spring.FileReaderAdapter;
+import patrones.bridge.spring.Shape;
 import patrones.visitor.spring.Circle;
 import patrones.visitor.spring.ClienteVisitor;
 import patrones.visitor.spring.Figure;
@@ -22,6 +25,9 @@ class PatronesApplicationTests {
 	
 	@Autowired
 	private FileReaderAdapter adapter;
+	
+	@Autowired
+	private ApplicationContext context;
 	
 	@Test
 	void visitor() {
@@ -40,6 +46,15 @@ class PatronesApplicationTests {
 		String filename="data.csv";
         adapter.readFile(filename);
         System.out.println( "Archivo procesado correctamente: " + filename);
+	}
+	
+	@Autowired
+	private Shape shape;
+	@Qualifier("Circle")
+	@Test
+	void bridge() {
+	
+			shape.draw();
 	}
 	
 
